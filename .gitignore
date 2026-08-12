@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.Rhistory
+.RData
+.venv/
+env/
+results/
+tmp/
+*.log

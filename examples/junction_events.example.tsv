@@ -1,0 +1,9 @@
+sample	read_id	junction_id	graph_query_coverage	provenance_class
+HIFI	hifi_read_001	J01	0.99	mitochondrial_candidate
+HIFI	hifi_read_002	J01	0.98	internal_NUMT_ambiguous
+HIFI	hifi_read_002	J01	0.98	internal_NUMT_ambiguous
+HIFI	hifi_read_003	J02	0.97	mitochondrial_candidate
+ONT	ont_read_001	J01	0.99	mitochondrial_candidate
+ONT	ont_read_001	J01	0.99	mitochondrial_candidate
+ONT	ont_read_002	J02	0.96	mitochondrial_candidate
+ONT	ont_read_003	J02	0.99	nuclear_boundary_NUMT
