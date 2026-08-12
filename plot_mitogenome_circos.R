@@ -8,7 +8,7 @@ usage <- function() {
     "  Rscript plot_mitogenome_circos.R --repeats repeats.tsv --genes genes.tsv ",
     "--gc gc.tsv --links links.tsv --genome-length 376041 --output figure.pdf ",
     "[--chromosome-id Mito] [--start-degree 83] [--gap-degree 14]\n\n",
-    "Input schemas are documented in docs/input_formats.md.\n"
+    "Input tables are tab-separated and supplied through command-line arguments.\n"
   ))
 }
 
