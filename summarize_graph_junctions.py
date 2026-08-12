@@ -117,9 +117,11 @@ def main() -> None:
         writer.writerow([
             "sample", "branch_id", "oriented_endpoint", "junction_1", "junction_2",
             "junction_1_distinct_reads", "junction_2_distinct_reads", "reads_supporting_both",
+            "junction_1_distinct_read_fraction", "junction_2_distinct_read_fraction",
             "junction_1_events", "junction_2_events", "total_events",
-            "junction_1_fraction", "junction_2_fraction",
-            "read_cluster_bootstrap95_low", "read_cluster_bootstrap95_high",
+            "junction_1_event_fraction", "junction_2_event_fraction",
+            "junction_1_event_fraction_read_cluster_bootstrap95_low",
+            "junction_1_event_fraction_read_cluster_bootstrap95_high",
         ])
         for sample in sorted(by_sample_read):
             read_events = by_sample_read[sample]
@@ -128,6 +130,9 @@ def main() -> None:
                 j1_reads = sum(j1 in values for values in read_events.values())
                 j2_reads = sum(j2 in values for values in read_events.values())
                 both = sum(j1 in values and j2 in values for values in read_events.values())
+                distinct_total = j1_reads + j2_reads
+                distinct_fraction_1 = j1_reads / distinct_total if distinct_total else float("nan")
+                distinct_fraction_2 = j2_reads / distinct_total if distinct_total else float("nan")
                 j1_events = sum(values.count(j1) for values in read_events.values())
                 j2_events = sum(values.count(j2) for values in read_events.values())
                 total = j1_events + j2_events
@@ -138,7 +143,9 @@ def main() -> None:
                 ) if total else (float("nan"), float("nan"))
                 writer.writerow([
                     sample, branch["branch_id"], branch["oriented_endpoint"], j1, j2,
-                    j1_reads, j2_reads, both, j1_events, j2_events, total,
+                    j1_reads, j2_reads, both,
+                    f"{distinct_fraction_1:.10f}", f"{distinct_fraction_2:.10f}",
+                    j1_events, j2_events, total,
                     f"{fraction_1:.10f}", f"{fraction_2:.10f}",
                     f"{low:.10f}", f"{high:.10f}",
                 ])
