@@ -12,6 +12,10 @@ This GitHub repository contains scripts used for analyses presented in the follo
 
 - `summarize_graph_junctions.py` - Summarizes long-read support for assembly-graph junctions. It reports distinct supporting reads and total traversal events, calculates the relative support for competing junctions at two-way branches, and estimates read-cluster bootstrap confidence intervals.
 
+- `assemble_mitogenome_with_hifisr.sh` - Extracts mitochondrial HiFi reads, filters reads by length and quality, performs reproducible random subsampling, and generates a draft mitochondrial assembly with [HiFi-SR](https://github.com/zouyinstein/hifisr).
+
+- `estimate_hifisr_variant_frequencies.sh` - Estimates mitochondrial variant frequencies from filtered HiFi reads using [HiFi-SR](https://github.com/zouyinstein/hifisr).
+
 - `README.md` - Project overview and descriptions of the scripts.
 
 - `LICENSE` - MIT license for the scripts in this repository.
