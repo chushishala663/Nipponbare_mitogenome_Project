@@ -23,6 +23,8 @@
 #   MIN_READ_QUALITY  Minimum read-quality cutoff (default: 0)
 #   SUBSAMPLE_SIZE    Number of mitochondrial reads sampled (default: 8000)
 #   RANDOM_SEED       Seed used by seqtk sample (default: 42)
+#   FILTERED_IDS      Read-ID file produced by filt_read_ids.py
+#   FILTERED_READS    FASTQ file created from FILTERED_IDS
 
 set -euo pipefail
 
@@ -82,8 +84,8 @@ python "$FILTER_IDS" \
     "$MIN_READ_QUALITY"
 
 MITO_READS="${SAMPLE}/reads/${SAMPLE}_mito.fastq"
-FILTERED_IDS="${SAMPLE}/reads/filt_reads/filt_L${MIN_READ_LENGTH}_mito_ids.txt"
-FILTERED_READS="${SAMPLE}/reads/filt_reads/mito_filt_L${MIN_READ_LENGTH}_mito.fastq"
+FILTERED_IDS="${FILTERED_IDS:-${SAMPLE}/reads/filt_reads/filt_L10K_mito_ids.txt}"
+FILTERED_READS="${FILTERED_READS:-${SAMPLE}/reads/filt_reads/mito_filt_L10K_mito.fastq}"
 SAMPLED_READS="${SAMPLE}/reads/sample_reads/sample_${SUBSAMPLE_SIZE}_mito.fastq"
 ASSEMBLY_SAMPLE="${SAMPLE}_${SUBSAMPLE_SIZE}"
 
